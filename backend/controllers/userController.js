@@ -7,7 +7,7 @@ const User = require('../models/userModel');
 // @desc    Register a new user
 // @route   /api/users
 // @access  Public
-const registerUser = async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   // Validation
@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
     res.status(400);
     throw new error('Invalid user data');
   }
-};
+});
 
 // @desc    Login a user
 // @route   /api/users/login
@@ -57,8 +57,6 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   // Check user and password match
-  // 바로 조건문으로 사용하고자해서 await를 사용해준것 같다.
-  // 다른 변수에 user.password를 대입시키고 if문에 그 변수를 넣어주면 await를 사용안해도된다.
   if (user && (await bcrypt.compare(password, user.password))) {
     return res.status(200).json({
       _id: user._id,

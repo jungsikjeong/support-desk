@@ -12,6 +12,7 @@ const app = express();
 
 // .json()은 JSON형태의 데이터를 해석해줌
 // .urlencoded()은 x-www-form-urlencoded형태의 데이터를 해석,
+// extended:false 는 쿼리 분석 x
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
