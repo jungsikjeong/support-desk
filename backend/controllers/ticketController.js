@@ -52,6 +52,7 @@ const getTicket = asyncHandler(async (req, res) => {
 // @access  Private
 const createTicket = asyncHandler(async (req, res) => {
   const { product, description } = req.body;
+  console.log(product, description);
 
   if (!product || !description) {
     res.status(400);
@@ -72,6 +73,8 @@ const createTicket = asyncHandler(async (req, res) => {
     user: req.user.id,
     status: 'new',
   });
+
+  console.log('ticket', ticket);
 
   res.status(201).json(ticket);
 });
