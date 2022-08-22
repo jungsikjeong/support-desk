@@ -10,6 +10,10 @@ const router = express.Router();
 
 const { protect } = require('../middleware/authMiddleware');
 
+// 노트 라우터로 재라우팅
+const noteRouter = require('./noteRoutes');
+router.use('/:ticketId/notes', noteRouter); // /api/tickets/:ticketId/notes
+
 router.route('/').get(protect, getTickets).post(protect, createTicket);
 
 router
