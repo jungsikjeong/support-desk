@@ -33,7 +33,7 @@ const Ticket = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteText, setNoteText] = useState('');
 
-  const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.tickets
   );
 
@@ -132,7 +132,7 @@ const Ticket = () => {
               onChange={(e) => setNoteText(e.target.value)}
             ></textarea>
           </div>
-          <div className='form-gro'>
+          <div className='form-group'>
             <button className='btn' type='submit'>
               Submit
             </button>
